@@ -15,6 +15,7 @@
         loadPassword();
         loadColors();
         menu.open('left');
+        if (password == null) passWindow.open();
     });
 
     $('body').mousemove(
