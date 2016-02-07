@@ -135,13 +135,16 @@ html.sb-active #sb-site, .sb-toggle-left, .sb-toggle-right, .sb-open-left, .sb-o
 }
 
 
-
+.filltext {
+    height:70px;
+    margin-right:10px;
+}
 #unlock-button {
     background-color:gray;
     font-size:25px;
     vertical-align:middle;
     text-align:center;
-
+   
 }
 
 #lock-icon {

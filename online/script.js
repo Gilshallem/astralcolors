@@ -16,6 +16,11 @@
         loadColors();
         menu.open('left');
         if (password == null) passWindow.open();
+        $(".filltext").textfill({});
+    });
+
+    $(window).resize(function () {
+        $(".filltext").textfill({});
     });
 
     $('body').mousemove(
