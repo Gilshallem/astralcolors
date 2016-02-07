@@ -92,8 +92,11 @@
 
     function onStartMove() {
         $('#fixed-top').animate({ top: 0, opacity: 1 }, { queue: false });
-        $('#fixed-bottom').toggle(password != null);
-        if (password != null) $('#fixed-bottom').animate({ bottom: 0, opacity: 1 }, { queue: false });
+        
+        if (password != null) {
+            $('#fixed-bottom').toggle(true);
+            $('#fixed-bottom').animate({ bottom: 0, opacity: 1 }, { queue: false });
+        }
     }
 
     function onEndMove() {
@@ -113,7 +116,7 @@
             item.data({ colorData: colors[i] });
             $('#color-list').append(item);
             $(".small-description").toggle(password != null);
-            $('#fixed-bottom').toggle(password != null);
+           
             $('.color-item').parent().click(
                function () {
                    chooseColor($(this).data("colorData"));
@@ -122,6 +125,7 @@
                }
            );
         }
+        $('#fixed-bottom').toggle(password != null);
         chooseColor(colors[0]);
     }
 
