@@ -31,14 +31,7 @@
           if (event.pageX < 10 && !menu.active('left')) {
               menu.open('left');
           }
-            onStartMove();
-            if (timer) {
-                clearTimeout(timer);
-                timer = 0;
-            }
-            timer = setTimeout(function () {
-                onEndMove();
-            }, 3000);
+          showHeaders();
 
       }
     );
@@ -90,21 +83,24 @@
            
     }
 
-    function onStartMove() {
+
+
+    function showHeaders() {
         $('#fixed-top').animate({ top: 0, opacity: 1 }, { queue: false });
-        
+
         if (password != null) {
             $('#fixed-bottom').toggle(true);
             $('#fixed-bottom').animate({ bottom: 0, opacity: 1 }, { queue: false });
         }
+        if (timer) {
+            clearTimeout(timer);
+            timer = 0;
+        }
+        timer = setTimeout(function () {
+            $('#fixed-top').animate({ top: -50, opacity: 0 }, { queue: false });
+            if (password != null) $('#fixed-bottom').animate({ bottom: -50, opacity: 0 }, { queue: false });
+        }, 2000);
     }
-
-    function onEndMove() {
-        $('#fixed-top').animate({ top: -50, opacity: 0 }, { queue: false });
-        if (password != null) $('#fixed-bottom').animate({ bottom: -50, opacity: 0 }, { queue: false });
-        
-    }
-
     function loadColors() {
 
         
@@ -139,6 +135,7 @@
             } else {
                 $('#big-description').text("");
             }
+            showHeaders();
         }
     }
 
