@@ -1,0 +1,183 @@
+html {
+	font-family: sans-serif;
+    height:100%;
+}
+
+body {
+
+        font-family: 'Open Sans',sans-serif;
+    font-size: 14px;
+    line-height: 1.428571429;
+    height:100%;
+}
+
+#sb-site, .sb-site-container {
+    background-color:inherit;
+}
+
+.sb-slidebar {
+	color: #fff;
+}
+
+html.sb-active #sb-site, .sb-toggle-left, .sb-toggle-right, .sb-open-left, .sb-open-right, .sb-close {
+	cursor: pointer;
+}
+
+/* Fixed position examples */
+#sb-site.top-padding {
+	padding-top: 50px;
+}
+
+#fixed-top {
+	position: fixed;
+	top: 0;
+    margin:0 auto;
+	width: 100%;
+	height: 50px;
+	background-color: rgba(0,0,0,0.4);
+	z-index: 4;
+    overflow:hidden;
+}
+
+
+
+
+.navicon{
+    float:left;
+    padding:14px;
+}
+#title {
+    margin:0 auto;
+    width:100%;
+    text-align:center;
+    font-size:20px;
+    padding:10px;
+    color:white;
+}
+
+
+#fullscreen{
+    float:right;
+    font-size:20px;
+    padding:10px;
+    color:white;
+    cursor:pointer;
+}
+
+
+
+#fixed-top span.sb-toggle-left {
+	float: left;
+	color: white;
+	padding: 10px;
+}
+
+#fixed-top span.sb-toggle-right {
+	float: right;
+	color: white;
+	padding: 10px;
+}
+
+#fixed-bottom {
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	height: 50px;
+	background-color: rgba(0,0,0,0.4);
+	z-index: 4;
+    display:none;
+}
+
+#big-description {
+     margin:0 auto;
+    width:100%;
+    text-align:center;
+    font-size:16px;
+    padding:14px;
+    color:white;
+}
+
+#fixed-bottom span.sb-toggle-left {
+	float: left;
+	color: white;
+	padding: 10px;
+}
+
+#fixed-bottom span.sb-toggle-right {
+	float: right;
+	color: white;
+	padding: 10px;
+    
+}
+
+.sb-menu {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+
+.sb-menu li {
+    width: 100%;
+    padding: 0px;
+    margin: 0;
+    
+
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+.color-item {
+    font-size:16px;
+    padding:10px;
+    min-height:40px;
+    cursor:pointer;
+
+    
+}
+
+
+
+#unlock-button {
+    background-color:gray;
+    font-size:25px;
+    vertical-align:middle;
+    text-align:center;
+
+}
+
+#lock-icon {
+    font-size:50px;
+    padding:10px;
+    margin-right:5px;
+    vertical-align:middle;
+}
+
+.color-item:hover {
+    background-color:aqua;
+    color:black
+    
+    
+}
+.navicon-line {
+    width: 24px;
+    height: 4px;
+    border-radius: 1px;
+    margin-bottom: 3px;
+    background-color: #fff;
+}
+
+
+
+.color-box {
+    width:40px;
+    height:40px;
+    float:left;
+    margin-right:5px;
+    vertical-align:middle;
+    background-color:aqua
+}
+
+.small-description {
+    font-size:12px;
+    color:gray;
+
+}
