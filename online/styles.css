@@ -86,15 +86,23 @@ html.sb-active #sb-site, .sb-toggle-left, .sb-toggle-right, .sb-open-left, .sb-o
 	background-color: rgba(0,0,0,0.4);
 	z-index: 4;
     display:none;
+     text-align:center;
 }
-
+#desc-container {
+    width:100%;
+    height: 50px;
+    text-align:center;
+     line-height: 50px; 
+  vertical-align: middle;
+}
 #big-description {
      margin:0 auto;
-    width:100%;
     text-align:center;
-    font-size:16px;
-    padding:14px;
+    padding:5px;
     color:white;
+    text-align:center;
+    line-height: 50px; 
+  vertical-align: middle;
 }
 
 #fixed-bottom span.sb-toggle-left {
@@ -130,7 +138,8 @@ html.sb-active #sb-site, .sb-toggle-left, .sb-toggle-right, .sb-open-left, .sb-o
     padding:10px;
     min-height:40px;
     cursor:pointer;
-
+    white-space:nowrap;
+    overflow:hidden;
     
 }
 
@@ -182,5 +191,9 @@ html.sb-active #sb-site, .sb-toggle-left, .sb-toggle-right, .sb-open-left, .sb-o
 .small-description {
     font-size:12px;
     color:gray;
+    overflow:hidden;
+    white-space:nowrap;
+    display:block;
+    text-overflow:ellipsis;
 
 }

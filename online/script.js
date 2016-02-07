@@ -17,10 +17,13 @@
         menu.open('left');
         if (password == null) passWindow.open();
         $(".filltext").textfill({});
+        
+        
     });
 
     $(window).resize(function () {
         $(".filltext").textfill({});
+        $("#desc-container").textfill({maxFontPixels:16});
     });
 
     $('body').mousemove(
@@ -106,7 +109,7 @@
             if (password!=null) {
                 colors[i].description = Tea.decrypt(colors[i].description, password);
             }
-            var item = $('<li><div class="color-item"><div class="color-box" style="background-color:' + colors[i].color + '"></div>' + colors[i].title + '<span class="small-description"><br />' + colors[i].description + '</span></div></li>');
+            var item = $('<li><div class="color-item"><div class="color-box" style="background-color:' + colors[i].color + '"></div>' + colors[i].title + '<span class="small-description">' + colors[i].description + '</span></div></li>');
             item.data({ colorData: colors[i] });
             $('#color-list').append(item);
             $(".small-description").toggle(password != null);
@@ -128,6 +131,7 @@
             $('#title').text(colorData.title);
             if (password != null) {
                 $('#big-description').text(colorData.description);
+                $("#desc-container").textfill({ maxFontPixels: 16 });
             } else {
                 $('#big-description').text("");
             }
