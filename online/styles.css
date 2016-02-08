@@ -85,7 +85,7 @@ html.sb-active #sb-site, .sb-toggle-left, .sb-toggle-right, .sb-open-left, .sb-o
 	height: 50px;
 	background-color: rgba(0,0,0,0.4);
 	z-index: 4;
-    display:none;
+    
      text-align:center;
 }
 #desc-container {

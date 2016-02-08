@@ -2,7 +2,7 @@
 
 (function ($) {
    
-    var timer;
+    var timer,lastMouseMove;
     var password;
     var menu;
     var passWindow;
@@ -16,13 +16,14 @@
         loadColors();
         menu.open('left');
         if (password == null) passWindow.open();
-        $(".filltext").textfill({});
+        $(".filltext").textfill({ maxFontPixels: 24 });
+        $("#desc-container").textfill({ maxFontPixels: 16 });
         
         
     });
 
     $(window).resize(function () {
-        $(".filltext").textfill({});
+        $(".filltext").textfill({ maxFontPixels: 24 });
         $("#desc-container").textfill({maxFontPixels:16});
     });
 
@@ -35,15 +36,22 @@
 
       }
     );
+    $('#sb-site').dblclick(
+      function () {
+          $(document).toggleFullScreen();
+      }
+    );
+
+
     
+
     $('#fullscreen').click(function () {
-        var isFS = !($(document).fullScreen());
         $(document).toggleFullScreen();
-        $("#fs-icon").toggleClass("fa-expand", !isFS);
-        $("#fs-icon").toggleClass("fa-compress", isFS);
-      
+     
         
     });
+
+   
 
     $('#unlock-button').click(function () {
       
@@ -53,19 +61,17 @@
     });
 
     $(document).on('confirmation', '[data-remodal-id=modal]', function () {
-        var pass = $("#password").val();
-        $("#password").val("");
-        if (validPass(pass)) {
-            Cookies.set('password', pass);
-            password = pass;
-            $("#color-list").empty();
-            loadColors();
-        }
-        else {
-            incPassWindow.open();
-        }
+        submitPassword();
         
         
+    });
+
+    $('#password').keypress(function (e) {
+        if (e.which == 13) {
+            passWindow.close();
+            submitPassword();
+            return false; 
+        }
     });
 
     $(document).on('confirmation', '[data-remodal-id=incorrect]', function () {
@@ -77,6 +83,20 @@
         $("#fs-icon").toggleClass("fa-compress", isFS);
     });
 
+    function submitPassword() {
+        var pass = $("#password").val();
+        $("#password").val("");
+        if (validPass(pass)) {
+            Cookies.set('password', pass);
+            password = pass;
+            $("#color-list").empty();
+            loadColors();
+        }
+        else {
+            incPassWindow.open();
+        }
+    }
+
     function loadPassword() {
         password = Cookies.get('password');
         if (password) $("#color-list").empty();
@@ -85,21 +105,27 @@
 
 
 
+
     function showHeaders() {
         $('#fixed-top').animate({ top: 0, opacity: 1 }, { queue: false });
-
+        $('#fixed-bottom').toggle(password != null);
         if (password != null) {
-            $('#fixed-bottom').toggle(true);
+            
             $('#fixed-bottom').animate({ bottom: 0, opacity: 1 }, { queue: false });
         }
-        if (timer) {
-            clearTimeout(timer);
-            timer = 0;
+        
+        if (!timer) {
+            timer = setInterval(function () {
+                if (lastMouseMove && new Date().getTime() - lastMouseMove.getTime() >= 2000) {
+                    clearInterval(timer);
+                    timer = null;
+                    // end moving
+                    $('#fixed-top').animate({ top: -50, opacity: 0 }, { queue: false });
+                    if (password != null) $('#fixed-bottom').animate({ bottom: -50, opacity: 0 }, { queue: false });
+                }
+            }, 100);
         }
-        timer = setTimeout(function () {
-            $('#fixed-top').animate({ top: -50, opacity: 0 }, { queue: false });
-            if (password != null) $('#fixed-bottom').animate({ bottom: -50, opacity: 0 }, { queue: false });
-        }, 2000);
+        lastMouseMove = new Date();
     }
     function loadColors() {
 
