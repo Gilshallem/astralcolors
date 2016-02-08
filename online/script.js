@@ -109,6 +109,7 @@
     function showHeaders() {
         $('#fixed-top').animate({ top: 0, opacity: 1 }, { queue: false });
         $('#fixed-bottom').toggle(password != null);
+        $('body').css('cursor', '');
         if (password != null) {
             
             $('#fixed-bottom').animate({ bottom: 0, opacity: 1 }, { queue: false });
@@ -120,6 +121,7 @@
                     clearInterval(timer);
                     timer = null;
                     // end moving
+                    $('body').css('cursor', 'none');
                     $('#fixed-top').animate({ top: -50, opacity: 0 }, { queue: false });
                     if (password != null) $('#fixed-bottom').animate({ bottom: -50, opacity: 0 }, { queue: false });
                 }
@@ -134,10 +136,10 @@
             if (password!=null) {
                 colors[i].description = Tea.decrypt(colors[i].description, password);
             }
-            var item = $('<li><div class="color-item"><div class="color-box" style="background-color:' + colors[i].color + '"></div>' + colors[i].title + '<span class="small-description">' + colors[i].description + '</span></div></li>');
+            var item = $('<li><div class="color-item"><div class="color-box" style="background-color:' + colors[i].color + '"></div><span class="list-title">' + colors[i].title + '</span><span class="small-description">' + colors[i].description + '</span></div></li>');
             item.data({ colorData: colors[i] });
             $('#color-list').append(item);
-            $(".small-description").toggle(password != null);
+            
            
             $('.color-item').parent().click(
                function () {
@@ -147,6 +149,8 @@
                }
            );
         }
+        $(".small-description").toggle(password != null);
+        $(".list-title").css({ "line-height":  password==null ?  "40px" :"" });
         $('#fixed-bottom').toggle(password != null);
         chooseColor(colors[0]);
     }

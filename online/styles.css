@@ -143,6 +143,9 @@ html.sb-active #sb-site, .sb-toggle-left, .sb-toggle-right, .sb-open-left, .sb-o
     
 }
 
+.list-title {
+    vertical-align:middle;
+}
 
 .filltext {
     height:70px;
