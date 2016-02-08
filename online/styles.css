@@ -186,7 +186,7 @@ html.sb-active #sb-site, .sb-toggle-left, .sb-toggle-right, .sb-open-left, .sb-o
     width:40px;
     height:40px;
     float:left;
-    margin-right:5px;
+    margin-right:10px;
     vertical-align:middle;
     background-color:aqua
 }

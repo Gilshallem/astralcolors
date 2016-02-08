@@ -150,7 +150,10 @@
            );
         }
         $(".small-description").toggle(password != null);
-        $(".list-title").css({ "line-height":  password==null ?  "40px" :"" });
+        $(".list-title").css({
+            "line-height": password == null ? "40px" : "",
+            "font-size": password == null ? "18px" : "",
+        });
         $('#fixed-bottom').toggle(password != null);
         chooseColor(colors[0]);
     }
