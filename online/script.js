@@ -29,7 +29,7 @@
 
     $('body').mousemove(
       function () {
-          if (event.pageX < 10 && !menu.active('left')) {
+          if (event.pageX < $('body').width()*0.03 && !menu.active('left')) {
               menu.open('left');
           }
           showHeaders();
