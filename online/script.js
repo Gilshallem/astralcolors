@@ -158,6 +158,7 @@
         $('.color-item').parent().click(
                function () {
                    chooseColor($(this).data().colorIndex);
+
                    menu.close()
 
                }
@@ -184,8 +185,10 @@
             } else {
                 $('#big-description').text("");
             }
-            showHeaders();
+            
             choosenColor = index;
+            showHeaders();
+            $('#fixed-bottom').toggle(password != null);
         }
     }
 
