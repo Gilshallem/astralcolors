@@ -158,9 +158,8 @@
         $('.color-item').parent().click(
                function () {
                    chooseColor($(this).data().colorIndex);
-
                    menu.close()
-
+                   $('#fixed-bottom').toggle(password != null);
                }
            );
         $(".small-description").toggle(password != null);
@@ -188,7 +187,7 @@
             
             choosenColor = index;
             showHeaders();
-            $('#fixed-bottom').toggle(password != null);
+            
         }
     }
 
