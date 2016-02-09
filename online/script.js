@@ -7,6 +7,7 @@
     var menu;
     var passWindow;
     var incPassWindow;
+    var choosenColor;
     $(document).ready(function () {
 
         menu = new $.slidebars().slidebars;
@@ -64,6 +65,16 @@
         submitPassword();
         
         
+    });
+
+    
+    $('#sb-site').on('swipeleft', function (e) {
+        console.log("swipeleft");
+        chooseColor(choosenColor>=colors.length-1 ? 0 : choosenColor + 1);
+    })
+    .on('swiperight', function(e) {
+        console.log("swiperight");
+        chooseColor(choosenColor <= 0 ? colors.length-1: choosenColor - 1)
     });
 
     $('#password').keypress(function (e) {
@@ -137,28 +148,33 @@
                 colors[i].description = Tea.decrypt(colors[i].description, password);
             }
             var item = $('<li><div class="color-item"><div class="color-box" style="background-color:' + colors[i].color + '"></div><span class="list-title">' + colors[i].title + '</span><span class="small-description">' + colors[i].description + '</span></div></li>');
-            item.data({ colorData: colors[i] });
+            item.data({ colorIndex:i });
+
             $('#color-list').append(item);
             
            
-            $('.color-item').parent().click(
+            
+        }
+        $('.color-item').parent().click(
                function () {
-                   chooseColor($(this).data("colorData"));
+                   chooseColor($(this).data().colorIndex);
                    menu.close()
 
                }
            );
-        }
         $(".small-description").toggle(password != null);
         $(".list-title").css({
             "line-height": password == null ? "40px" : "",
             "font-size": password == null ? "18px" : "",
         });
         $('#fixed-bottom').toggle(password != null);
-        chooseColor(colors[0]);
+        chooseColor(0);
     }
 
-    function chooseColor(colorData) {
+    function chooseColor(index) {
+        if (index==null) return;
+        var colorData = colors[index];
+
         if (colorData) {
             $('body').css("background-color", colorData.color);
             $('#title').text(colorData.title);
@@ -169,6 +185,7 @@
                 $('#big-description').text("");
             }
             showHeaders();
+            choosenColor = index;
         }
     }
 
