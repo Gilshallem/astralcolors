@@ -53,6 +53,10 @@
 		event = {
 			distX: e.distX,
 			distY: e.distY,
+			startX: e.startX,
+			startY: e.startY,
+			endX: e.pageX,
+			endY: e.pageY,
 			velocityX: e.velocityX,
 			velocityY: e.velocityY,
 			finger: e.finger

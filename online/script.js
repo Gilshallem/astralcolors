@@ -69,12 +69,18 @@
 
     
     $('#sb-site').on('swipeleft', function (e) {
-        console.log("swipeleft");
+        console.log(e);
         chooseColor(choosenColor>=colors.length-1 ? 0 : choosenColor + 1);
     })
     .on('swiperight', function(e) {
-        console.log("swiperight");
-        chooseColor(choosenColor <= 0 ? colors.length-1: choosenColor - 1)
+        //console.log(e.startX);
+        if (e.startX < $('#sb-site').width() * 0.05 && !menu.active('left')) {
+            menu.open('left');
+        }
+        else {
+            chooseColor(choosenColor <= 0 ? colors.length - 1 : choosenColor - 1)
+        }
+        
     });
 
     $('#password').keypress(function (e) {
