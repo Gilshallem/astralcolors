@@ -1,10 +1,11 @@
 ﻿body {
-	background: url('back.jpg') center center fixed; 
+	background: url('back.jpg') no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  
+  filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='.myBackground.jpg', sizingMethod='scale');
+-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='myBackground.jpg', sizingMethod='scale')";
      font-family: 'Open Sans',sans-serif;
     font-size: 18px;
     line-height: 1.428571429;
