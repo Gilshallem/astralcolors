@@ -1,12 +1,18 @@
 ﻿body {
     background-image:url('back.jpg');
     background-size:cover;
+	 background-position: center; 
      font-family: 'Open Sans',sans-serif;
     font-size: 18px;
     line-height: 1.428571429;
     height:100%;
     vertical-align:middle;
     color:white
+}
+
+body::after{
+    position:absolute; width:0; height:0; overflow:hidden; z-index:-1;
+    content:url('back.jpg');
 }
 
 div#preload { display: none; }
